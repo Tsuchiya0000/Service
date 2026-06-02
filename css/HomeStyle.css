@@ -1,4 +1,7 @@
-/* ホーム画面用スタイル */
+/* 
+ホーム画面用スタイル
+*/
+
 
 /* ページ全体 */
 body{
@@ -12,11 +15,14 @@ body{
 /* タイトル */
 h1{
     margin-bottom: 5px;
+
 }
 
+/* サブタイトル */
 .subtitle{
     color: #666;
     margin-bottom: 30px;
+
 }
 
 /* メニュー縦並び */
@@ -28,6 +34,7 @@ h1{
     margin-bottom: 30px;
 }
 
+/* メニューボタン */
 .menu button{
     width: 260px;
     padding: 14px;
@@ -37,11 +44,14 @@ h1{
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     cursor: pointer;
     transition: 0.2s;
+
 }
 
+/* メニューボタンのホバー効果 */
 .menu button:hover{
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+
 }
 
 /* パレット一覧 */
@@ -50,6 +60,7 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+
 }
 
 /* カード */
@@ -63,9 +74,11 @@ h1{
     text-align: center;
 }
 
+/* カードのホバー効果 */
 .paletteCard:hover{
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+
 }
 
 /* 色表示 */
@@ -74,13 +87,16 @@ h1{
     justify-content: center;
     gap: 6px;
     margin-top: 10px;
+
 }
 
+/* 色のドット */
 .colorDot{
     width: 22px;
     height: 22px;
     border-radius: 6px;
     border: 1px solid #ddd;
+
 }
 
 /* ボタン */
@@ -92,49 +108,58 @@ h1{
     border-radius: 8px;
     cursor: pointer;
     transition: 0.2s;
+
 }
 
-/* 見る */
+/* 表示 */
 .paletteCard button:nth-of-type(1){
     background: #2196f3;
     color: white;
+
 }
 
 /* 編集 */
 .paletteCard button:nth-of-type(2){
     background: #ff9800;
     color: white;
+
 }
 
 /* 削除 */
 .paletteCard button:nth-of-type(3){
     background: #ff5252;
     color: white;
+
 }
 
+/* ボタンのホバー効果 */
 .paletteCard button:hover{
     transform: translateY(-2px);
     filter: brightness(1.05);
+
 }
 
-
+/* ダークモードのボタンホバー */
 button{
     transition: 0.2s;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+
 }
 
+/* ダークモードのボタンホバー */
 button:hover{
     transform: translateY(-2px);
+    filter: brightness(1.1);
+
 }
 
+/* ダークモードのボタン押下 */
 button:active{
     transform: translateY(0px);
+
 }
-
-
-
 
 /* インポートボタン */
 .importButton{
@@ -149,18 +174,21 @@ button:active{
     transition: 0.25s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     letter-spacing: 0.5px;
+
 }
 
 /* ホバー */
 .importButton:hover{
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+
 }
 
 /* 押した時 */
 .importButton:active{
     transform: translateY(0px);
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+
 }
 
 
@@ -168,29 +196,34 @@ button:active{
 body.dark .importButton{
     background: linear-gradient(135deg, #f5f5f5, #ccc);
     color: #111;
+
 }
 
-
+/* ダークモードのホバー */
 body.dark .fileBtn:hover{
     background: #ddd;
-}
 
+}
 
 /* ホバー */
 .fileBtn:hover{
     transform: translateY(-2px);
     background: #333;
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+
 }
 
 /* ダークモード */
 body.dark .fileBtn{
     background: #f5f5f5;
     color: #111;
+
 }
 
+/* ダークモードのホバー */
 body.dark .fileBtn:hover{
     background: #ddd;
+
 }
 
 
@@ -221,6 +254,7 @@ body.dark .menu button{
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
+/* ホバー */
 #darkToggle:hover{
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.2);
@@ -238,11 +272,13 @@ body.dark .paletteCard button:nth-of-type(1){
     color: white;
 }
 
+/* 編集 */
 body.dark .paletteCard button:nth-of-type(2){
     background: #fb8c00;
     color: white;
 }
 
+/* 削除 */
 body.dark .paletteCard button:nth-of-type(3){
     background: #e53935;
     color: white;

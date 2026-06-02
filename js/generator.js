@@ -1,3 +1,5 @@
+
+// テーマジェネレーターのスクリプト
 const themes =
 [
     "冒険",
@@ -7,19 +9,13 @@ const themes =
     "探偵"
 ];
 
-const button =
-    document.getElementById("generateBtn");
+const button = document.getElementById("generateBtn");
+const result = document.getElementById("topicBox");
 
-const result =
-    document.getElementById("topicBox");
+button.addEventListener("click", () => {
+    // ランダムにテーマを選ぶ
+    const index = Math.floor(Math.random() * themes.length);
 
-button.addEventListener("click", () =>
-{
-    const index =
-        Math.floor(
-            Math.random() * themes.length
-        );
-
-    result.textContent =
-        themes[index];
+    // テーマを表示
+    result.textContent = themes[index];
 });
