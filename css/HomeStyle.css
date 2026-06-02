@@ -1,0 +1,276 @@
+/* ホーム画面用スタイル */
+
+/* ページ全体 */
+body{
+    text-align: center;
+    margin-top: 80px;
+    font-family: sans-serif;
+    background-color: #f7f8fc;
+}
+
+
+/* タイトル */
+h1{
+    margin-bottom: 5px;
+}
+
+.subtitle{
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* メニュー縦並び */
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.menu button{
+    width: 260px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* パレット一覧 */
+#paletteList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* カード */
+.paletteCard{
+    width: 220px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    text-align: center;
+}
+
+.paletteCard:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* 色表示 */
+.colorRow{
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.colorDot{
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* ボタン */
+.paletteCard button{
+    margin-top: 10px;
+    margin-right: 6px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* 見る */
+.paletteCard button:nth-of-type(1){
+    background: #2196f3;
+    color: white;
+}
+
+/* 編集 */
+.paletteCard button:nth-of-type(2){
+    background: #ff9800;
+    color: white;
+}
+
+/* 削除 */
+.paletteCard button:nth-of-type(3){
+    background: #ff5252;
+    color: white;
+}
+
+.paletteCard button:hover{
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+
+button{
+    transition: 0.2s;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: translateY(-2px);
+}
+
+button:active{
+    transform: translateY(0px);
+}
+
+
+
+
+/* インポートボタン */
+.importButton{
+    padding: 12px 18px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #111, #333);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    letter-spacing: 0.5px;
+}
+
+/* ホバー */
+.importButton:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* 押した時 */
+.importButton:active{
+    transform: translateY(0px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+
+/* ダークモード */
+body.dark .importButton{
+    background: linear-gradient(135deg, #f5f5f5, #ccc);
+    color: #111;
+}
+
+
+body.dark .fileBtn:hover{
+    background: #ddd;
+}
+
+
+/* ホバー */
+.fileBtn:hover{
+    transform: translateY(-2px);
+    background: #333;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* ダークモード */
+body.dark .fileBtn{
+    background: #f5f5f5;
+    color: #111;
+}
+
+body.dark .fileBtn:hover{
+    background: #ddd;
+}
+
+
+/* ----- ダークモード ----- */
+body.dark{
+    background-color: #818181;
+    color: #f5f5f5;
+}
+
+body.dark .subtitle{
+    color: #ffffff;
+}
+
+body.dark .menu button{
+    background: #2a2a2a;
+    color: #f5f5f5;
+}
+
+/* ライトモード時（黒ボタン） */
+#darkToggle{
+    background: #111;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#darkToggle:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* ダークモード時（白ボタン） */
+body.dark #darkToggle{
+    background: #f5f5f5;
+    color: #111;
+}
+
+/* カード内ボタン */
+body.dark .paletteCard button:nth-of-type(1){
+    background: #1e88e5;
+    color: white;
+}
+
+body.dark .paletteCard button:nth-of-type(2){
+    background: #fb8c00;
+    color: white;
+}
+
+body.dark .paletteCard button:nth-of-type(3){
+    background: #e53935;
+    color: white;
+}
+
+/* 全体ボタン（ダーク時のベース） */
+body.dark button{
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* カード全体 */
+body.dark .paletteCard{
+    background: #2a2a2a;
+    color: #f5f5f5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* 色の枠（暗モードで少し見やすく） */
+body.dark .colorDot{
+    border: 1px solid #444;
+}
+
+/* ライトでも少し整える */
+.paletteCard{
+    color: #222;
+}
+
+/* ホバーは共通 */
+.paletteCard:hover{
+    transform: translateY(-2px);
+}

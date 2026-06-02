@@ -1,0 +1,71 @@
+/*
+Create画面用スタイル
+パレット作成画面
+*/
+
+
+/* ページ全体 */
+body{
+    text-align: center;
+    margin-top: 80px;
+    font-family: sans-serif;
+    background-color: #f7f8fc;
+}
+
+/* パレット名入力 */
+#paletteName{
+    width: 300px;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 色をまとめるコンテナ（横並び） */
+.colorContainer{
+    display: flex;              /* 横並び */
+    justify-content: center;    /* 中央配置 */
+    gap: 20px;                  /* 色同士の間隔 */
+    margin-top: 20px;
+}
+
+/* 各色ブロック */
+.colorItem{
+    text-align: center;
+}
+
+/* 色選択 */
+.colorItem input[type="color"]{
+    width: 140px;               /* 大きく表示 */
+    height: 140px;              /* 正方形に */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* ボタン共通 */
+button{
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* 追加・保存ボタン */
+#localSaveBtn{
+    background: #4caf50;
+    color: white;
+}
+
+#exportBtn{
+    background: #2196f3;
+    color: white;
+}
+
+#backBtn{
+    background: #777;
+    color: white;
+}

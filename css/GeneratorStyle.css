@@ -1,0 +1,80 @@
+/*
+お題ジェネレーター
+*/
+
+/* ページ全体 */
+.generatorContainer
+{
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+/* 背景 */
+.generatorTitle
+{
+    margin-bottom: 20px;
+}
+
+/* お題表示ボックス */
+.topicBox
+{
+    min-height: 80px;
+
+    padding: 20px;
+
+    margin: 20px 0;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 12px;
+
+    background: white;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+
+    font-size: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+/* テキストエリア */
+.generateButton
+{
+    padding: 10px 20px;
+
+    margin-right: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* 戻るボタン */
+.backButton
+{
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* 生成ボタン */
+.generateButton:hover, .backButton:hover
+{
+    transform: translateY(-1px);
+}
