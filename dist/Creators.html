@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>クリエイター管理</title>
+    <link rel="stylesheet" href="css/CreatorsStyle.css">
+</head>
+
+<body>
+
+    <h1>お気に入りクリエイター</h1>
+
+    <button onclick="location.href='Home.html'">
+        戻る
+    </button>
+
+    <hr>
+    <h2>追加</h2>
+
+    <input type="text" id="name" placeholder="名前">
+    <input type="text" id="url" placeholder="URL">
+    <input type="text" id="tag" placeholder="タグ">
+    <textarea id="memo" placeholder="メモ"></textarea>
+
+    <button id="addBtn">追加</button>
+
+    <hr>
+    <h2>一覧</h2>
+    <h2>タグ</h2>
+    <div id="tagList"></div>
+    <input type="text" id="searchBox" placeholder="名前・タグで検索">
+    <button id = "clearSearchBtn">検索クリア</button>
+
+    <div id="list"></div>
+
+    <script type="module" src="js/creators.js"></script>
+
+</body>
+
+</html>

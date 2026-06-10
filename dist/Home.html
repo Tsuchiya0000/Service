@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>創作支援ツール</title>
+    <link rel="stylesheet" href="css/HomeStyle.css">
+</head>
+
+<body>
+
+<h1>創作支援ツールキット</h1>
+<p class="subtitle">創作を支援するために生まれたサイト</p>
+<hr>
+
+<div class="menu">
+    <button onclick="location.href='Generator.html'">お題ジェネレーター</button>
+    <button onclick="location.href='Create.html'">パレットノート</button>
+    <button onclick="location.href='Creators.html'">お気に入りクリエイター</button>
+</div>
+
+<h2>保存済みパレット</h2>
+<div id="paletteList"></div>
+
+<!-- インポート -->
+<button id="importBtn">ファイル選択</button>
+<input type="file" id="importFile" hidden>
+
+<hr>
+<div class="api-experiment-section" style="margin: 30px 0; padding: 20px; border: 2px dashed #ccc; border-radius: 10px; text-align: center;">
+    <h3>今日の創作インスピレーション（API実験）</h3>
+    <p>インターネットの向こう側から、ランダムに画像を引っ張ってきます！</p>
+    <p>※フリーライセンス画像のみ</p>
+    <button id="dogBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">画像を読み込む</button>
+    <div id="dogArea" style="margin-top: 15px; min-height: 200px; display: flex; align-items: center; justify-content: center; background: #f9f9f9; border-radius: 8px;">
+        <p style="color: #666;">ボタンを押してね</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <p style="font-size: 14px; color: #555; margin-bottom: 5px;">直近5枚の履歴（クリックで再表示）：</p>
+        <div id="historyArea" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            </div>
+    </div>
+</div>
+
+<hr>
+<div style="padding-top: 10px;">
+        <p>Node.jsサーバから、創作運勢を取得します</p>
+<button id="suggestColorBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #4A90E2; color: white; border: none; border-radius: 5px;">🎨 自作APIからおすすめカラーを貰う</button>
+    
+    <div id="suggestColorArea" style="margin-top: 15px; min-height: 100px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 8px;">
+        <p style="color: #666;">配色ガチャ！</p>
+    </div>
+    </div>
+
+<hr>
+<!-- ダークモード切替ボタン -->
+<button id="darkToggle">ダークモード</button>
+
+<!-- 使い方ボタン -->
+<button onclick="location.href='HowTo.html'">
+    使い方
+</button>
+
+<script type = "module" src="js/home.js"></script>
+
+</body>
+</html>
