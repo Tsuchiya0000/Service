@@ -1,54 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>新規パレット</title>
-    <link rel="stylesheet" href="css/CreateStyle.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/CreateStyle.css" />
+  </head>
+  <body>
+    <h1>新規パレット</h1>
 
-<h1>新規パレット</h1>
+    <p>パレット名</p>
+    <input type="text" id="paletteName" placeholder="例：オリキャラA" />
 
-<p>パレット名</p>
-<input type="text" id="paletteName" placeholder="例：オリキャラA">
-
-<div class="colorContainer">
-    <div class="colorItem">
+    <div class="colorContainer">
+      <div class="colorItem">
         <p>色1</p>
-        <input type="color" id="color1">
-    </div>
+        <input type="color" id="color1" />
+      </div>
 
-    <div class="colorItem">
+      <div class="colorItem">
         <p>色2</p>
-        <input type="color" id="color2">
-    </div>
+        <input type="color" id="color2" />
+      </div>
 
-    <div class="colorItem">
+      <div class="colorItem">
         <p>色3</p>
-        <input type="color" id="color3">
-    </div>
+        <input type="color" id="color3" />
+      </div>
 
-    <div class="colorItem">
+      <div class="colorItem">
         <p>色4</p>
-        <input type="color" id="color4">
+        <input type="color" id="color4" />
+      </div>
     </div>
+    <br /><br />
 
-</div>
-<br><br>
+    <button id="localSaveBtn">アプリに保存</button>
 
-<button id="localSaveBtn">
-    アプリに保存
-</button>
+    <button id="exportBtn">JSONとして保存</button>
 
-<button id="exportBtn">
-    JSONとして保存
-</button>
+    <button id="backBtn">戻る</button>
 
-<button id="backBtn">
-    戻る
-</button>
-
-    <script type = "module" src="js/create.js"></script>
-
-</body>
+    <script type="module" src="js/create.js"></script>
+  </body>
 </html>

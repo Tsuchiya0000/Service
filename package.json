@@ -4,22 +4,22 @@
   "description": "創作活動をサポートするために作成したWebアプリです。  \r パレット管理・お題生成・クリエイター管理などをまとめたツールキットです。",
   "main": "index.js",
   "scripts": {
-  "ts:watch": "npx tsc --watch",
-  "server:start": "node server.js",
-  "dev": "concurrently \"npm run ts:watch\" \"npm run server:start\""
+    "ts:watch": "npx tsc --watch",
+    "server:start": "node server.js",
+    "dev": "concurrently \"npm run ts:watch\" \"npm run server:start\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jo-Tsuchiya-01100100/Service.git"
+    "url": "git+https://github.com/Tsuchiya0000/Service.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Jo-Tsuchiya-01100100/Service/issues"
+    "url": "https://github.com/Tsuchiya0000/Service/issues"
   },
-  "homepage": "https://github.com/Jo-Tsuchiya-01100100/Service#readme",
+  "homepage": "https://github.com/Tsuchiya0000/Service#readme",
   "devDependencies": {
     "typescript": "^6.0.3"
   },

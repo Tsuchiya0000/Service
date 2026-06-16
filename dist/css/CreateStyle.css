@@ -5,7 +5,7 @@ Create画面用スタイル
 
 
 /* ページ全体 */
-body{
+body {
     text-align: center;
     margin-top: 80px;
     font-family: sans-serif;
@@ -13,7 +13,7 @@ body{
 }
 
 /* パレット名入力 */
-#paletteName{
+#paletteName {
     width: 300px;
     padding: 10px;
     font-size: 14px;
@@ -23,29 +23,34 @@ body{
 }
 
 /* 色をまとめるコンテナ（横並び） */
-.colorContainer{
-    display: flex;              /* 横並び */
-    justify-content: center;    /* 中央配置 */
-    gap: 20px;                  /* 色同士の間隔 */
+.colorContainer {
+    display: flex;
+    /* 横並び */
+    justify-content: center;
+    /* 中央配置 */
+    gap: 20px;
+    /* 色同士の間隔 */
     margin-top: 20px;
 }
 
 /* 各色ブロック */
-.colorItem{
+.colorItem {
     text-align: center;
 }
 
 /* 色選択 */
-.colorItem input[type="color"]{
-    width: 140px;               /* 大きく表示 */
-    height: 140px;              /* 正方形に */
+.colorItem input[type="color"] {
+    width: 140px;
+    /* 大きく表示 */
+    height: 140px;
+    /* 正方形に */
     border: none;
     cursor: pointer;
     border-radius: 10px;
 }
 
 /* ボタン共通 */
-button{
+button {
     margin-top: 20px;
     padding: 12px 20px;
     font-size: 14px;
@@ -55,17 +60,17 @@ button{
 }
 
 /* 追加・保存ボタン */
-#localSaveBtn{
+#localSaveBtn {
     background: #4caf50;
     color: white;
 }
 
-#exportBtn{
+#exportBtn {
     background: #2196f3;
     color: white;
 }
 
-#backBtn{
+#backBtn {
     background: #777;
     color: white;
 }

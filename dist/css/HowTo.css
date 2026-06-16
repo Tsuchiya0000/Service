@@ -4,7 +4,7 @@ HowTo.html用スタイル
 
 
 /* 全体 */
-body{
+body {
     font-family: sans-serif;
     text-align: center;
     margin: 0;
@@ -15,14 +15,14 @@ body{
 }
 
 /* タイトル */
-h1{
+h1 {
     margin-bottom: 30px;
 
 }
 
 
 /* コンテナ */
-.howtoContainer{
+.howtoContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ h1{
 
 
 /* カード */
-.howtoCard{
+.howtoCard {
     width: 340px;
     background: white;
     padding: 16px 18px;
@@ -40,34 +40,34 @@ h1{
     text-align: left;
 
     /* 影 */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: 0.2s;
 
 }
 
 /* カードのホバー効果 */
-.howtoCard:hover{
+.howtoCard:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 
 }
 
 /* カードのテキスト */
-.howtoCard h2{
+.howtoCard h2 {
     font-size: 16px;
     margin-bottom: 8px;
 
 }
 
 /* カードの説明文 */
-.howtoCard p{
+.howtoCard p {
     font-size: 14px;
     color: #555;
 
 }
 
 /* ボタン */
-button{
+button {
     margin-top: 30px;
     padding: 10px 16px;
     border: none;
@@ -80,31 +80,31 @@ button{
 }
 
 /* ボタンのホバー効果 */
-button:hover{
+button:hover {
     transform: translateY(-2px);
 
 }
 
 /* ダークモード */
-body.dark{
+body.dark {
     background: #121212;
     color: #f5f5f5;
 
 }
 
 /* ダークモードのカード */
-body.dark .howtoCard{
+body.dark .howtoCard {
     background: #1e1e1e;
     color: #f5f5f5;
 }
 
 /* ダークモードのカードの説明文 */
-body.dark .howtoCard p{
+body.dark .howtoCard p {
     color: #ccc;
 }
 
 /* ダークモードのボタン */
-body.dark button{
+body.dark button {
     background: #f5f5f5;
     color: #111;
 }

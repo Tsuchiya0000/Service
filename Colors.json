@@ -1,8 +1,8 @@
 [
-{ "theme": "レトロポップ ", "colors": ["#FF6B6B", "#4DBC96", "#F3A333"] },
-{ "theme": "サイバーパンク ", "colors": ["#00F0FF", "#FF007A", "#9D00FF"] },
-{ "theme": "北欧ナチュラル ", "colors": ["#8E9A86", "#EAE3D2", "#607EAA"] },
-{ "theme": "ゆめかわパステル ", "colors": ["#FFC6FF", "#BDB2FF", "#CAFFBF"] },
-{ "theme": "真夏のひまわり ", "colors": ["#FFD000", "#FF9100", "#4A5A30"] },
-{ "theme": "真夜中のネオン ", "colors": ["#0B192C", "#1F305E", "#E60067"] }
+  { "theme": "レトロポップ ", "colors": ["#FF6B6B", "#4DBC96", "#F3A333"] },
+  { "theme": "サイバーパンク ", "colors": ["#00F0FF", "#FF007A", "#9D00FF"] },
+  { "theme": "北欧ナチュラル ", "colors": ["#8E9A86", "#EAE3D2", "#607EAA"] },
+  { "theme": "ゆめかわパステル ", "colors": ["#FFC6FF", "#BDB2FF", "#CAFFBF"] },
+  { "theme": "真夏のひまわり ", "colors": ["#FFD000", "#FF9100", "#4A5A30"] },
+  { "theme": "真夜中のネオン ", "colors": ["#0B192C", "#1F305E", "#E60067"] }
 ]
