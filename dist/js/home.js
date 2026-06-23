@@ -1,4 +1,5 @@
 // home.ts
+import { toggleDarkMode } from "./darkMode.js";
 // TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
 export {};
 // 保存済みパレット表示の要素
@@ -7,6 +8,7 @@ const paletteList = document.getElementById("paletteList");
 render();
 // パレット一覧表示
 function render() {
+    // 返り値がない関数なので : void をつける
     if (!paletteList)
         return;
     paletteList.innerHTML = "";
@@ -70,7 +72,7 @@ if (importBtn && importFile) {
         const reader = new FileReader();
         reader.onload = () => {
             try {
-                // reader.result が文字列であることを保証する
+                // reader.resultが文字列であることを保証する
                 const resultText = reader.result;
                 const data = JSON.parse(resultText);
                 // インポートされたデータがPaletteの配列か、単一のPaletteかチェック
@@ -89,63 +91,63 @@ if (importBtn && importFile) {
         reader.readAsText(file);
     });
 }
-// ダークモード
+// ダークモード// ダークモード
 const darkToggle = document.getElementById("darkToggle");
 // ダークモード切り替え
 if (darkToggle) {
+    // 初回読み込み時のチェック
     if (localStorage.getItem("darkMode") === "on") {
         document.body.classList.add("dark");
-        darkToggle.textContent = "ライトモード";
+        darkToggle.textContent = "ライトモードに切り替え";
     }
+    // ボタンをクリックした時に外部関数を実行
     darkToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
+        toggleDarkMode();
+        // モードの状態をlocalStorageに保存する処理だけここに残す
         if (document.body.classList.contains("dark")) {
             localStorage.setItem("darkMode", "on");
-            darkToggle.textContent = "ライトモード";
         }
         else {
             localStorage.setItem("darkMode", "off");
-            darkToggle.textContent = "ダークモード";
         }
     });
-    // ダークモードの状態を保存するために、localStorageを使用していることがわかります。ユーザーがダークモードを選択した場合、その状態が保存され、次回ページを訪れたときにも同じモードが適用されるようになっています。
 }
-// API
-// HTMLの要素を捕まえる
-// --- 💡 履歴機能付き：アートインスピレーションAPI ---
-const dogBtn = document.getElementById('dogBtn');
-const dogArea = document.getElementById('dogArea');
-const historyArea = document.getElementById('historyArea');
+// 履歴機能付きAPI
 let imageHistory = [];
+const dogBtn = document.getElementById("dogBtn");
+const dogArea = document.getElementById("dogArea");
+const historyArea = document.getElementById("historyArea");
 function displayImage(url) {
     if (dogArea) {
         dogArea.innerHTML = `<img src="${url}" alt="インスピレーション" style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">`;
     }
 }
 function updateHistoryButtons() {
-    if (!historyArea)
+    if (!historyArea) {
         return;
+    }
     historyArea.innerHTML = "";
     imageHistory.forEach((url, index) => {
-        const btn = document.createElement('button');
+        const btn = document.createElement("button");
         btn.textContent = `${index + 1}枚前`;
         btn.style.padding = "5px 10px";
         btn.style.cursor = "pointer";
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
             displayImage(url);
         });
         historyArea.appendChild(btn);
     });
 }
 if (dogBtn && dogArea && historyArea) {
-    dogBtn.addEventListener('click', async () => {
+    dogBtn.addEventListener("click", async () => {
         dogArea.innerHTML = "<p>通信中...（世界のアートを探しています）</p>";
         try {
             const randomId = Math.floor(Math.random() * 1000);
             const imageUrl = `https://picsum.photos/id/${randomId}/400/300`;
             const response = await fetch(imageUrl);
-            if (!response.ok)
+            if (!response.ok) {
                 throw new Error("画像が見つかりませんでした");
+            }
             imageHistory.unshift(imageUrl);
             if (imageHistory.length > 5) {
                 imageHistory.pop();
@@ -154,26 +156,27 @@ if (dogBtn && dogArea && historyArea) {
             updateHistoryButtons();
         }
         catch (error) {
-            dogArea.innerHTML = "<p style='color: #666;'>もう一度ボタンを押してみてね！</p>";
+            dogArea.innerHTML =
+                "<p style='color: #666;'>もう一度ボタンを押してください！</p>";
             console.error("APIエラー:", error);
         }
     });
 }
-// src/ts/home.ts のカラー提案部分（旧おみくじ部分）を以下に上書きします
-// 💡 捕まえる id の名前を HTML と合わせる！
-const colorSuggestBtn = document.getElementById('suggestColorBtn');
-const colorSuggestArea = document.getElementById('suggestColorArea');
+// idの名前をHTMLと合わせる
+const colorSuggestBtn = document.getElementById("suggestColorBtn");
+const colorSuggestArea = document.getElementById("suggestColorArea");
 if (colorSuggestBtn && colorSuggestArea) {
-    colorSuggestBtn.addEventListener('click', async () => {
-        colorSuggestArea.innerHTML = "<p>通信中...（自作サーバーが配色を計算しています）</p>";
+    colorSuggestBtn.addEventListener("click", async () => {
+        colorSuggestArea.innerHTML =
+            "<p>通信中...（自作サーバーが配色を計算しています）</p>";
         try {
-            // 自作のカラー提案APIを呼び出す
-            const response = await fetch('http://localhost:3000/api/suggest-colors');
-            if (!response.ok)
-                throw new Error("通信エラー");
-            const data = await response.json();
-            // 届いた3色で丸い色玉を組み立てる
             let colorBoxesHTML = "";
+            const response = await fetch("http://localhost:3000/api/suggest-colors");
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error("通信エラー");
+            }
+            // 組みあわせる
             data.colors.forEach((color) => {
                 colorBoxesHTML += `
                     <div style="text-align: center;">
@@ -193,7 +196,8 @@ if (colorSuggestBtn && colorSuggestArea) {
             `;
         }
         catch (error) {
-            colorSuggestArea.innerHTML = "<p style='color: red;'>カラー提案APIとの通信に失敗しました。</p>";
+            colorSuggestArea.innerHTML =
+                "<p style='color: red;'>カラー提案APIとの通信に失敗しました。</p>";
             console.error("APIエラー:", error);
         }
     });

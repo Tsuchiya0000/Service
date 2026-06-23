@@ -1,5 +1,7 @@
 // home.ts
 
+import { toggleDarkMode } from "./darkMode.js";
+
 // TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
 export {};
 
@@ -101,7 +103,7 @@ if (importBtn && importFile) {
 
     reader.onload = () => {
       try {
-        // reader.result が文字列であることを保証する
+        // reader.resultが文字列であることを保証する
         const resultText = reader.result as string;
         const data = JSON.parse(resultText);
 
@@ -127,42 +129,36 @@ if (importBtn && importFile) {
   });
 }
 
-// ダークモード
-const darkToggle = document.getElementById(
-  "darkToggle",
-) as HTMLButtonElement | null;
+// ダークモード// ダークモード
+const darkToggle = document.getElementById("darkToggle") as HTMLButtonElement | null;
 
 // ダークモード切り替え
 if (darkToggle) {
+  // 初回読み込み時のチェック
   if (localStorage.getItem("darkMode") === "on") {
     document.body.classList.add("dark");
-    darkToggle.textContent = "ライトモード";
+    darkToggle.textContent = "ライトモードに切り替え";
   }
 
+  // ボタンをクリックした時に外部関数を実行
   darkToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+    toggleDarkMode();
 
+    // モードの状態をlocalStorageに保存する処理だけここに残す
     if (document.body.classList.contains("dark")) {
       localStorage.setItem("darkMode", "on");
-      darkToggle.textContent = "ライトモード";
     } else {
       localStorage.setItem("darkMode", "off");
-      darkToggle.textContent = "ダークモード";
     }
   });
-  // ダークモードの状態を保存するために、localStorageを使用していることがわかります。ユーザーがダークモードを選択した場合、その状態が保存され、次回ページを訪れたときにも同じモードが適用されるようになっています。
 }
 
-// API
-// HTMLの要素を捕まえる
-// --- 💡 履歴機能付き：アートインスピレーションAPI ---
-const dogBtn = document.getElementById("dogBtn") as HTMLButtonElement | null;
-const dogArea = document.getElementById("dogArea") as HTMLDivElement | null;
-const historyArea = document.getElementById(
-  "historyArea",
-) as HTMLDivElement | null;
-
+// 履歴機能付きAPI
 let imageHistory: string[] = [];
+
+const dogBtn = document.getElementById("dogBtn")            as HTMLButtonElement | null;
+const dogArea = document.getElementById("dogArea")          as HTMLDivElement    | null;
+const historyArea = document.getElementById("historyArea",) as HTMLDivElement    | null;
 
 function displayImage(url: string) {
   if (dogArea) {
@@ -171,8 +167,12 @@ function displayImage(url: string) {
 }
 
 function updateHistoryButtons() {
-  if (!historyArea) return;
+  if (!historyArea) {
+    return;
+  }
+
   historyArea.innerHTML = "";
+
   imageHistory.forEach((url, index) => {
     const btn = document.createElement("button");
     btn.textContent = `${index + 1}枚前`;
@@ -181,6 +181,7 @@ function updateHistoryButtons() {
     btn.addEventListener("click", () => {
       displayImage(url);
     });
+
     historyArea.appendChild(btn);
   });
 }
@@ -192,45 +193,46 @@ if (dogBtn && dogArea && historyArea) {
       const randomId = Math.floor(Math.random() * 1000);
       const imageUrl = `https://picsum.photos/id/${randomId}/400/300`;
       const response = await fetch(imageUrl);
-      if (!response.ok) throw new Error("画像が見つかりませんでした");
+      if (!response.ok) {
+        throw new Error("画像が見つかりませんでした");
+      }
+
       imageHistory.unshift(imageUrl);
+
       if (imageHistory.length > 5) {
         imageHistory.pop();
       }
+
       displayImage(imageUrl);
       updateHistoryButtons();
+
     } catch (error) {
       dogArea.innerHTML =
-        "<p style='color: #666;'>もう一度ボタンを押してみてね！</p>";
+        "<p style='color: #666;'>もう一度ボタンを押してください！</p>";
       console.error("APIエラー:", error);
     }
   });
 }
 
-// src/ts/home.ts のカラー提案部分（旧おみくじ部分）を以下に上書きします
-
-// 💡 捕まえる id の名前を HTML と合わせる！
-const colorSuggestBtn = document.getElementById(
-  "suggestColorBtn",
-) as HTMLButtonElement | null;
-const colorSuggestArea = document.getElementById(
-  "suggestColorArea",
-) as HTMLDivElement | null;
+// idの名前をHTMLと合わせる
+const colorSuggestBtn = document.getElementById("suggestColorBtn",)   as HTMLButtonElement | null;
+const colorSuggestArea = document.getElementById("suggestColorArea",) as HTMLDivElement    | null;
 
 if (colorSuggestBtn && colorSuggestArea) {
   colorSuggestBtn.addEventListener("click", async () => {
     colorSuggestArea.innerHTML =
       "<p>通信中...（自作サーバーが配色を計算しています）</p>";
 
-    try {
-      // 自作のカラー提案APIを呼び出す
+    try { 
+      let colorBoxesHTML = "";
       const response = await fetch("http://localhost:3000/api/suggest-colors");
-      if (!response.ok) throw new Error("通信エラー");
-
       const data = await response.json();
 
-      // 届いた3色で丸い色玉を組み立てる
-      let colorBoxesHTML = "";
+      if (!response.ok) {
+        throw new Error("通信エラー");
+      }
+
+      // 組みあわせる
       data.colors.forEach((color: string) => {
         colorBoxesHTML += `
                     <div style="text-align: center;">

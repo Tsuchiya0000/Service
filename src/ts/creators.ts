@@ -1,26 +1,26 @@
 // creators.ts
 
-// TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
+import { toggleDarkMode, initDarkMode } from "./darkMode.js";
+
+initDarkMode();
+
+// TypeScriptのモジュールシステムを使用するために、空のエクスポート
 export {};
 
-// クリエイターデータの構造（型）を定義する
+// クリエイターデータの構造を定義する
 interface Creator {
   name: string;
   url: string;
-  tag: string[]; // 元のロジックに合わせて「文字列の配列」に指定
+  tag: string[];
   memo: string;
 }
 
 // HTML要素をすべて取得する（適切な型をあてはめる）
-const addBtn = document.getElementById("addBtn") as HTMLButtonElement | null;
-const list = document.getElementById("list") as HTMLDivElement | null;
-const searchBox = document.getElementById(
-  "searchBox",
-) as HTMLInputElement | null;
-const clearSearchBtn = document.getElementById(
-  "clearSearchBtn",
-) as HTMLButtonElement | null;
-const tagList = document.getElementById("tagList") as HTMLDivElement | null;
+const addBtn    = document.getElementById("addBtn")               as HTMLButtonElement | null;
+const list      = document.getElementById("list")                 as HTMLDivElement    | null;
+const searchBox = document.getElementById("searchBox",)           as HTMLInputElement  | null;
+const clearSearchBtn = document.getElementById("clearSearchBtn",) as HTMLButtonElement | null;
+const tagList = document.getElementById("tagList")                as HTMLDivElement    | null;
 
 // 初期表示
 render();
@@ -40,14 +40,14 @@ if (clearSearchBtn) {
 if (addBtn) {
   addBtn.addEventListener("click", () => {
     // 各入力フォームの要素をその場で取得
-    const nameEl = document.getElementById("name") as HTMLInputElement | null;
-    const urlEl = document.getElementById("url") as HTMLInputElement | null;
-    const tagEl = document.getElementById("tag") as HTMLInputElement | null;
-    const memoEl = document.getElementById(
-      "memo",
-    ) as HTMLTextAreaElement | null;
+    const nameEl = document.getElementById("name")  as HTMLInputElement    | null;
+    const urlEl  = document.getElementById("url")   as HTMLInputElement    | null;
+    const tagEl  = document.getElementById("tag")   as HTMLInputElement    | null;
+    const memoEl = document.getElementById("memo",) as HTMLTextAreaElement | null;
 
-    if (!nameEl || !urlEl || !tagEl || !memoEl) return;
+    if (!nameEl || !urlEl || !tagEl || !memoEl) {
+      return;
+    }
 
     // カンマで区切って前後のスペースを取り、空文字を排除して配列にする（元のスマートなロジック！）
     const tagsArray = tagEl.value
@@ -63,7 +63,7 @@ if (addBtn) {
     };
 
     if (creator.name === "") {
-      alert("名前を入力してね");
+      alert("名前を入力");
       return;
     }
 
@@ -85,28 +85,39 @@ if (addBtn) {
 
 // 一覧表示関数
 function render(): void {
-  if (!list || !searchBox) return;
+  if (!list || !searchBox) {
+    return;
+  }
   list.innerHTML = "";
 
-  const localData = localStorage.getItem("creators");
+  const localData           = localStorage.getItem("creators");
   const creators: Creator[] = localData ? JSON.parse(localData) : [];
-  const keyword = searchBox.value.toLowerCase();
+  const keyword             = searchBox.value.toLowerCase();
 
+  // 絞り込まれたクリエイターを画面に表示
   creators
     .filter((c: Creator) => {
       const name = c.name.toLowerCase();
-      // 配列である tag を結合して文字列にしてから検索する
       const tags = Array.isArray(c.tag) ? c.tag.join(" ").toLowerCase() : "";
-      return name.includes(keyword) || tags.includes(keyword);
+      
+      return name.includes(keyword) ||  tags.includes(keyword);
     })
     .forEach((creator: Creator, index: number) => {
       const div = document.createElement("div");
-      div.className = "card";
-
       const name = document.createElement("h3");
-      name.textContent = creator.name;
-
       const tagWrap = document.createElement("div");
+      const memo = document.createElement("p");
+      const openBtn = document.createElement("button");
+      const delBtn = document.createElement("button");
+
+      div.className = "card";
+      name.textContent = creator.name;
+      memo.className = "memo";
+      memo.textContent = creator.memo || "メモなし";
+      openBtn.textContent = "開く";
+      openBtn.onclick = () => {
+        window.open(creator.url, "_blank");
+      };
 
       if (Array.isArray(creator.tag)) {
         creator.tag.forEach((tag: string) => {
@@ -124,17 +135,6 @@ function render(): void {
         });
       }
 
-      const memo = document.createElement("p");
-      memo.className = "memo";
-      memo.textContent = creator.memo || "メモなし";
-
-      const openBtn = document.createElement("button");
-      openBtn.textContent = "開く";
-      openBtn.onclick = () => {
-        window.open(creator.url, "_blank");
-      };
-
-      const delBtn = document.createElement("button");
       delBtn.textContent = "削除";
       delBtn.onclick = () => {
         const innerLocalData = localStorage.getItem("creators");
@@ -162,17 +162,16 @@ function renderTags(): void {
   if (!tagList) return;
   tagList.innerHTML = "";
 
+  let allTags: string[] = [];
   const localData = localStorage.getItem("creators");
   const creators: Creator[] = localData ? JSON.parse(localData) : [];
-  let allTags: string[] = [];
+  const uniqueTags = [...new Set(allTags)];
 
   creators.forEach((c: Creator) => {
     if (Array.isArray(c.tag)) {
       allTags.push(...c.tag);
     }
   });
-
-  const uniqueTags = [...new Set(allTags)];
 
   uniqueTags.forEach((tag: string) => {
     const btn = document.createElement("button");
@@ -189,4 +188,9 @@ function renderTags(): void {
 
     tagList.appendChild(btn);
   });
+}
+
+const darkToggle = document.getElementById("darkToggle") as HTMLButtonElement | null;
+if (darkToggle) {
+    darkToggle.addEventListener("click", toggleDarkMode);
 }

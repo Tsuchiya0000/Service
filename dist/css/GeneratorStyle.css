@@ -1,19 +1,80 @@
-/*
-お題ジェネレーター
-*/
+/* ==========================================
+   カラー変数の定義（ここで色を一括管理）
+   ========================================== */
+:root {
+    /* ライトモードの色設定（元のデザインを維持） */
+    --bg-main: #f7f8fc;
+    --bg-card: white;
+    --bg-input: white;
+    --bg-tag: #f0f0f0;
+    --bg-tag-hover: #e0e0e0;
+    --text-main: #000000;
+    --text-sub: #666666;
+    --border-color: #e5e5e5;
+    --input-border: #ddd;
+}
 
-/* ページ全体 */
+body.dark {
+    /* ダークモードの色設定 */
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --bg-input: #2d2d2d;
+    --bg-tag: #2d3238;
+    --bg-tag-hover: #3e444c;
+    --text-main: #f8f9fa;
+    --text-sub: #a8bbc8;
+    --border-color: #333333;
+    --input-border: #444444;
+}
+
+/* ==========================================
+   共通・ページ全体
+   ========================================== */
+body {
+    text-align: center;
+    margin-top: 80px;
+    font-family: sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 入力欄（共通） */
+input,
+textarea {
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ボタン共通 */
+button {
+    padding: 10px 16px;
+    margin: 6px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   【新設】お題ジェネレーター用のスタイル
+   ========================================== */
+
+/* ページ全体（ジェネレーター用コンテナ） */
 .generatorContainer {
     max-width: 600px;
-
     margin: 40px auto;
-
     padding: 20px;
-
     text-align: center;
 }
 
-/* 背景 */
+/* タイトル */
 .generatorTitle {
     margin-bottom: 20px;
 }
@@ -21,55 +82,192 @@
 /* お題表示ボックス */
 .topicBox {
     min-height: 80px;
-
     padding: 20px;
-
     margin: 20px 0;
-
-    border: 1px solid #e5e5e5;
-
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-
-    background: white;
-
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.08);
-
+    background: var(--bg-card); /* 💡ライト時は白、ダーク時は黒系に連動 */
+    color: var(--text-main);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     font-size: 20px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-/* テキストエリア */
+/* 生成ボタン */
 .generateButton {
     padding: 10px 20px;
-
     margin-right: 10px;
-
     border: none;
-
     border-radius: 8px;
-
     cursor: pointer;
+}
+
+/* 生成ボタン・戻るボタンのホバー（共通部分から独立しているためここに維持） */
+.generateButton:hover,
+.backButton:hover {
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   Create画面（パレット作成）用のスタイル
+   ========================================== */
+
+/* パレット名入力 */
+#paletteName {
+    display: inline-block;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+/* 色をまとめるコンテナ（横並び） */
+.colorContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 各色ブロック */
+.colorItem {
+    text-align: center;
+}
+
+/* 色選択 */
+.colorItem input[type="color"] {
+    width: 140px;
+    height: 140px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background: none;
+}
+
+/* 各種ボタン位置と余白調整 */
+#localSaveBtn, #exportBtn, #backBtn {
+    margin-top: 20px;
+    padding: 12px 20px;
+}
+
+/* 追加・保存ボタン */
+#localSaveBtn {
+    background: #4caf50;
+    color: white;
+}
+
+#exportBtn {
+    background: #2196f3;
+    color: white;
+}
+
+#backBtn {
+    background: #777;
+    color: white;
+}
+
+
+/* ==========================================
+   Creator画面用のスタイル
+   ========================================== */
+
+/* クリエイター入力専用の配置 */
+#name, #url, #tag, #memo {
+    display: block;
+    width: 320px;
+    margin: 8px auto;
+}
+
+#memo {
+    height: 120px;
+    resize: none;
+}
+
+/* 検索ボックス */
+#searchBox {
+    width: 500px;
+    max-width: 90%;
+    margin: 20px auto 10px auto;
+}
+
+/* 追加ボタン */
+#addBtn {
+    background: #4caf50;
+    color: white;
+}
+
+/* 検索クリアボタン */
+#clearSearchBtn {
+    background: #ff9800;
+    color: white;
 }
 
 /* 戻るボタン */
 .backButton {
     padding: 10px 20px;
-
     border: none;
-
     border-radius: 8px;
-
     cursor: pointer;
+    background: #777;
+    color: white;
 }
 
-/* 生成ボタン */
-.generateButton:hover,
-.backButton:hover {
-    transform: translateY(-1px);
+/* 一覧 */
+#list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+/* カード */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease, border-color 0.3s ease;
+    text-align: left;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* タグ */
+.tagButton {
+    display: inline-block;
+    margin: 3px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: none;
+    background: var(--bg-tag);
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tagButton:hover {
+    background: var(--bg-tag-hover);
+}
+
+/* メモ */
+.memo {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: 8px;
+    transition: color 0.3s ease;
+}
+
+/* カード内ボタン */
+.card button {
+    margin-top: 10px;
+    margin-right: 10px;
 }

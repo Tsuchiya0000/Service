@@ -1,14 +1,44 @@
-/*
-Creator画面用スタイル
-検索・ボタン追加版
-*/
+/* ==========================================
+   カラー変数の定義（ここで色を一括管理）
+   ========================================== */
+:root {
+    /* ライトモードの色設定（元のデザインを維持） */
+    --bg-main: #f7f8fc;
+    --bg-card: white;
+    --bg-input: white;
+    --bg-tag: #f0f0f0;
+    --bg-tag-hover: #e0e0e0;
+    --text-main: #000000;
+    --text-sub: #666666;
+    --border-color: #e5e5e5;
+    --input-border: #ddd;
+}
+
+body.dark {
+    /* ダークモードの色設定（暗すぎず見やすい配色） */
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --bg-input: #2d2d2d;
+    --bg-tag: #2d3238;
+    --bg-tag-hover: #3e444c;
+    --text-main: #f8f9fa;
+    --text-sub: #a8bbc8;
+    --border-color: #333333;
+    --input-border: #444444;
+}
+
+/* ==========================================
+   既存のデザインに色変数を適用
+   ========================================== */
 
 /* ページ全体 */
 body {
     text-align: center;
     margin-top: 80px;
     font-family: sans-serif;
-    background-color: #f7f8fc;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 入力欄 */
@@ -19,8 +49,11 @@ textarea {
     margin: 8px auto;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--input-border);
+    background-color: var(--bg-input);
+    color: var(--text-main);
     border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* メモ */
@@ -76,12 +109,12 @@ button {
 
 /* カード */
 .card {
-    background: white;
-    border: 1px solid #e5e5e5;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease, border-color 0.3s ease;
     text-align: left;
 }
 
@@ -97,20 +130,23 @@ button {
     padding: 5px 10px;
     border-radius: 999px;
     border: none;
-    background: #f0f0f0;
+    background: var(--bg-tag);
+    color: var(--text-main);
     cursor: pointer;
     font-size: 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .tagButton:hover {
-    background: #e0e0e0;
+    background: var(--bg-tag-hover);
 }
 
 /* メモ */
 .memo {
     font-size: 13px;
-    color: #666;
+    color: var(--text-sub);
     margin-top: 8px;
+    transition: color 0.3s ease;
 }
 
 /* カード内ボタン */

@@ -1,5 +1,9 @@
 // create.ts
 
+import { toggleDarkMode, initDarkMode } from "./darkMode.js";
+
+initDarkMode();
+
 // TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
 export {};
 
@@ -149,4 +153,9 @@ if (backBtn) {
     // ホームに戻る
     location.href = "Home.html";
   });
+}
+
+const darkToggle = document.getElementById("darkToggle") as HTMLButtonElement | null;
+if (darkToggle) {
+    darkToggle.addEventListener("click", toggleDarkMode);
 }

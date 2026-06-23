@@ -1,10 +1,14 @@
 // create.ts
+import { toggleDarkMode, initDarkMode } from "./darkMode.js";
+initDarkMode();
 // TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
 export {};
 // 編集モードのチェック
 const editIndexStr = localStorage.getItem("editPalette");
 // null と "null" の両方に対応するための安全なパース処理
-const editIndex = (editIndexStr !== null && editIndexStr !== "null") ? parseInt(editIndexStr, 10) : null;
+const editIndex = editIndexStr !== null && editIndexStr !== "null"
+    ? parseInt(editIndexStr, 10)
+    : null;
 // HTML要素を取得する（適切な型を指定）
 const saveBtn = document.getElementById("localSaveBtn");
 const exportBtn = document.getElementById("exportBtn");
@@ -42,7 +46,7 @@ function getPalette() {
         return null;
     return {
         name: nameInput.value,
-        colors: [c1.value, c2.value, c3.value, c4.value]
+        colors: [c1.value, c2.value, c3.value, c4.value],
     };
 }
 // アプリに保存
@@ -109,4 +113,8 @@ if (backBtn) {
         // ホームに戻る
         location.href = "Home.html";
     });
+}
+const darkToggle = document.getElementById("darkToggle");
+if (darkToggle) {
+    darkToggle.addEventListener("click", toggleDarkMode);
 }

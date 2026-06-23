@@ -1,5 +1,9 @@
 // generator.ts
 
+import { toggleDarkMode, initDarkMode } from "./darkMode.js";
+
+initDarkMode();
+
 // TypeScriptのモジュールシステムを使用するために、空のエクスポートを追加
 export {};
 
@@ -20,3 +24,8 @@ button.addEventListener("click", () => {
   // 結果を表示
   result.textContent = themes[index] ?? "";
 });
+
+const darkToggle = document.getElementById("darkToggle") as HTMLButtonElement | null;
+if (darkToggle) {
+    darkToggle.addEventListener("click", toggleDarkMode);
+}

@@ -33,7 +33,8 @@ if (index !== null && palettes[index]) {
             colorCode.style.cursor = "pointer";
             // カラーコードをクリップボードにコピー
             colorCode.onclick = () => {
-                navigator.clipboard.writeText(color)
+                navigator.clipboard
+                    .writeText(color)
                     .then(() => {
                     alert("カラーコードをコピーしました！");
                 })
